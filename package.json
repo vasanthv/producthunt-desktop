@@ -1,0 +1,27 @@
+{
+	"name": "phapp",
+	"version": "0.0.1",
+	"description": "A desktop app for Product Hunt",
+	"main": "main.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "electron ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/vasanthv/phapp.git"
+	},
+	"keywords": [
+		"electron",
+		"producthunt"
+	],
+	"author": "Vasanth V",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/vasanthv/phapp/issues"
+	},
+	"homepage": "https://github.com/vasanthv/phapp#readme",
+	"devDependencies": {
+		"electron": "^6.0.4"
+	}
+}

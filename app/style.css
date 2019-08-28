@@ -1,0 +1,43 @@
+body {
+	height: 100vh;
+	margin: 0px;
+	padding: 0px;
+}
+#wrapper {
+	height: 100vh;
+	max-width: 800px;
+	display: flex;
+	margin: auto;
+}
+#wrapper aside {
+	width: 72px;
+	background: #cc4d29;
+	color: #fff;
+}
+#wrapper aside #logo {
+	padding: 12px;
+	margin: auto;
+}
+#wrapper #app {
+	flex: 1;
+	height: 100vh;
+	overflow-y: scroll;
+}
+#app::-webkit-scrollbar {
+	width: 0.1rem;
+}
+#app::-webkit-scrollbar-track {
+	background: none;
+	opacity: 0;
+}
+#app::-webkit-scrollbar-thumb {
+	background: none;
+	width: 1px;
+	opacity: 0.5;
+	border-radius: 0.5rem;
+}
+#webview {
+	height: 100%;
+	opacity: 0;
+	transition: opacity 1s;
+}

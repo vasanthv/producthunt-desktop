@@ -1,0 +1,130 @@
+/* hide the header */
+#app>div>div:first-child {
+	display: none !important;
+	/*border: 1px solid red;*/
+}
+
+/* Home page: upcoming products, best of week & hot discussion sections */
+main[class^='main']>div>div:not([class])>div:first-child {
+	display: none !important;
+}
+
+/* Home page: Hide Upcoming | Newest links */
+div[class^='headerActions'] {
+	display: none !important;
+}
+
+/* Home page: remove the top margin for the page*/
+div[class^='constraintWidth_'] {
+	margin: 0 !important;
+}
+
+/* Post page: Hide the vote button in the post page. So that the top sticky bar appears */
+div[class^='voteButtonAside'] {
+	display: none;
+}
+
+/* Profle page: Hide the close button */
+div[class^='overlay_'] a[class^='close'] {
+	display: none;
+}
+
+/* Change css for the section titles like "Today" "Yesterday" */
+main[class^='main']>div>div:not([class])>div:last-child div[class^='header_'] {
+	background: #f3f3f3;
+	position: sticky;
+	top: 0px;
+	z-index: 10;
+	padding: 15px;
+	margin: 0px !important;
+	text-align: center;
+}
+main[class^='main']>div>div:not([class])>div:last-child div[class^='header_'] span {
+	margin: auto;
+	color: #D04B25;
+}
+
+/* Post page: as pop up */
+div[class^='overlay_'] {
+	background: #fff;
+}
+div[class^='overlay_']>div[class^='content_'] {
+	display: block;
+	margin-top: 80px;
+}
+div[class^='overlay_']>div[class^='content_']>div[class^='contentBackground_'] {
+	padding: 0px;
+	background: #fff;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+main[class^='modalWrap'] {
+	margin: 0px;
+	padding: 0px;
+}
+main[class^='modalWrap']>div[class^='container'] {
+	padding-bottom: 5px;
+}
+main[class^='modalWrap']>div[class^='container']>div[class^='main'] {
+	margin: 0px auto;
+}
+aside[class^='aside']>a {
+	display: none;
+	/* Send to Phone Button */
+}
+div[class^='items']>a:last-child {
+	display: none;
+	/* Alternatives Link */
+}
+div[class^='items']>hr {
+	display: none;
+}
+
+/* Profile page*/
+header img[class^='userImageContainer'] {
+	width: 100% !important;
+	height: 100% !important;
+}
+div[class^='social'] button:last-child,
+div[class^='social'] a:last-child {
+	display: none;
+}
+main[class^='content'] section {
+	/* Hide the maker goals in profile page */
+	display: none;
+}
+
+/* User Cards */
+div[class^='userCard'] {
+	width: 100%;
+	flex-direction: row;
+	padding: 10px;
+	height: auto;
+	border-radius: 0;
+	border: none;
+	border-bottom: 1px solid #e8e8e8;
+	margin: 0;
+}
+div[class^='userCard']>a[class^='clickableArea'] {
+	flex: 1;
+	text-align: left;
+}
+div[class^='userCard']>a[class^='clickableArea']>div[class^='userImage'] {
+	float: left;
+}
+div[class^='userCard']>a[class^='clickableArea'] strong[class^='name'],
+div[class^='userCard']>a[class^='clickableArea'] span[class^='headline'],
+div[class^='userCard']>a[class^='clickableArea'] span[class^='username'] {
+	display: block;
+	margin: 0;
+	margin-left: 100px;
+	line-height: 1.5;
+}
+div[class^='userCard']>div[class^='followButton'] {
+	width: 100px;
+	text-align: right;
+}
+div[class^='userCard']>div[class^='followButton'] button {
+	position: relative;
+	top: 1rem;
+}
