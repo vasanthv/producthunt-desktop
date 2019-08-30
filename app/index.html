@@ -33,6 +33,11 @@
 						<span class="icon-spinner11"></span>
 					</a>
 				</li>
+				<li v-if="canGoBack">
+					<a href="javascript:void(0)" v-on:click="backClick">
+						<span class="icon-cross"></span>
+					</a>
+				</li>
 			</ul>
 			<ul id="bottom" v-if="userId">
 				<li>

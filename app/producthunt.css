@@ -1,5 +1,5 @@
 /* hide the header */
-#app>div>div:first-child {
+#app>div>div[class^='header_'] {
 	display: none !important;
 	/*border: 1px solid red;*/
 }

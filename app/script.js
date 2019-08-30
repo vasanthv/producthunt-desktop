@@ -9,30 +9,20 @@ const producthuntCSS = fs.readFileSync(path.join(__dirname, '/producthunt.css'))
 const webview = document.getElementById('webview');
 webview.addEventListener('dom-ready', function() {
 	console.log('--DOM Ready');
-	//Called only on initial load
-	setTimeout(() => {
-		webview.getWebContents().executeJavaScript('window.localStorage').then((result) => {
-			// got Product Hunt localstorage here
-			// we can decide to show login or feed based on this values
-			if (result.ajs_user_traits) {
-				const userInfo = JSON.parse(result.ajs_user_traits);
-				if (userInfo.user_id) phApp.userId = userInfo.user_id;
-				if (userInfo.username) phApp.userName = userInfo.username;
-				phApp.userInfo = userInfo;
-			}
-		});
-		webview.getWebContents().executeJavaScript('document.querySelector("a[class^=\'notificationsButton\']") ? document.querySelector("a[class^=\'notificationsButton\']").textContent : 0').then((result) => {
-			phApp.notificationCount = result;
-		});
-	}, 1000);
-	webview.insertCSS(producthuntCSS);
-	webview.style.opacity = '1';
-	phApp.hideLoading();
+	webview.insertCSS(producthuntCSS); // Set the new css for the page.
+	getUserInfoFromPH(); //Called only on initial load
+	setTimeout(() => { // giving sometime for the css to set
+		phApp.hideLoading();
+		webview.style.opacity = '1';
+	}, 100);
+	phApp.canGoBack = false;
 });
 webview.addEventListener('did-navigate-in-page', (e) => {
 	console.log('--Did Nav');
 	phApp.hideLoading();
 	webview.style.opacity = '1';
+	phApp.canGoBack = webview.canGoBack();
+	getUserInfoFromPH();
 });
 webview.addEventListener('new-window', (e) => {
 	const protocol = url.parse(e.url).protocol
@@ -49,7 +39,8 @@ const phApp = new Vue({
 		userInfo: {},
 		userId: null,
 		userName: null,
-		notificationCount: 0
+		notificationCount: 0,
+		canGoBack: false
 	},
 	methods: {
 		homeClick: function() {
@@ -79,6 +70,9 @@ const phApp = new Vue({
 			this.showLoading();
 			webview.reload();
 		},
+		backClick: function() {
+			webview.goBack();
+		},
 		exitClick: function() {
 			if (confirm("Are you sure you want to logout?")) {
 				webview.style.opacity = '0';
@@ -90,6 +84,7 @@ const phApp = new Vue({
 				});
 				this.page = 'home';
 				this.showLoading();
+				this.canGoBack = false;
 			}
 		},
 		profileClick: function() {
@@ -126,3 +121,19 @@ const searchApp = new Vue({
 		}
 	}
 });
+
+function getUserInfoFromPH() {
+	webview.getWebContents().executeJavaScript('window.localStorage').then((result) => {
+		// got Product Hunt localstorage here
+		// we can decide to show login or feed based on this values
+		if (result.ajs_user_traits) {
+			const userInfo = JSON.parse(result.ajs_user_traits);
+			if (userInfo.user_id) phApp.userId = userInfo.user_id;
+			if (userInfo.username) phApp.userName = userInfo.username;
+			phApp.userInfo = userInfo;
+		}
+	});
+	webview.getWebContents().executeJavaScript('document.querySelector("a[class^=\'notificationsButton\']") ? document.querySelector("a[class^=\'notificationsButton\']").textContent : 0').then((result) => {
+		phApp.notificationCount = result;
+	});
+}
