@@ -2,7 +2,7 @@
 An unofficial desktop app for Product Hunt. *Currently available only for Mac.*
 
 <p align=center><img src="https://i.imgur.com/R2mHXSq.png" width="680"></p>
-<p align=center><a href="/"><img src="https://i.imgur.com/xb0cyR5.png" width="200"></a></p>
+<p align=center>[<img src="https://i.imgur.com/xb0cyR5.png">](/releases)</p>
 
 ## About
 This is an Electron app in which Product Hunt Web app is loaded in `<webview>`. 
