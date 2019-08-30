@@ -41,7 +41,7 @@ main[class^='main']>div>div:not([class])>div:last-child div[class^='header_'] {
 }
 main[class^='main']>div>div:not([class])>div:last-child div[class^='header_'] span {
 	margin: auto;
-	color: #D04B25;
+	color: #da552f;
 }
 
 /* Post page: as pop up */
