@@ -1,6 +1,6 @@
 {
 	"name": "Product-Hunt",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "An unofficial desktop app for Product Hunt",
 	"main": "main.js",
 	"scripts": {
@@ -11,18 +11,18 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/vasanthv/phapp.git"
+		"url": "git+https://github.com/vasanthv/producthunt-desktop.git"
 	},
 	"keywords": [
 		"electron",
 		"producthunt"
 	],
 	"author": "Vasanth.V",
-	"license": "ISC",
+	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/vasanthv/phapp/issues"
+		"url": "https://github.com/vasanthv/producthunt-desktop/issues"
 	},
-	"homepage": "https://github.com/vasanthv/phapp#readme",
+	"homepage": "https://github.com/vasanthv/producthunt-desktop#readme",
 	"devDependencies": {
 		"electron": "^6.0.4",
 		"electron-builder": "^21.2.0"
@@ -30,7 +30,7 @@
 	"build": {
 		"appId": "ph.desktop",
 		"productName": "Product Hunt",
-		"copyright": "Copyright © ${author}",
+		"copyright": "Copyright © 2019 ${author}",
 		"mac": {
 			"category": "public.app-category.news",
 			"darkModeSupport": true,
