@@ -15,8 +15,8 @@ div[class^='headerActions'] {
 }
 
 /* Home page: remove the top margin for the page*/
-div[class^='constraintWidth_'] {
-	margin: 0 !important;
+main[class^='main']>div>div:not([class]) {
+	margin-top: -20px;
 }
 
 /* Post page: Hide the vote button in the post page. So that the top sticky bar appears */
@@ -51,6 +51,7 @@ div[class^='overlay_'] {
 div[class^='overlay_']>div[class^='content_'] {
 	display: block;
 	margin-top: 80px;
+	margin-bottom: 0px;
 }
 div[class^='overlay_']>div[class^='content_']>div[class^='contentBackground_'] {
 	padding: 0px;
@@ -68,6 +69,16 @@ main[class^='modalWrap']>div[class^='container'] {
 main[class^='modalWrap']>div[class^='container']>div[class^='main'] {
 	margin: 0px auto;
 }
+main[class^='modalWrap']>div[class^='container']>div[class^='main']>div[class^='container'],
+main[class^='modalWrap']>div[class^='container']>div[class^='main']>section[class^='container'] {
+	padding: 0px 10px;
+}
+main>div[class^='header_'] {
+	margin-top: 40px;
+}
+main>div[class^='header_'] div[class^='breadcrumbs_'] {
+	visibility: hidden;
+}
 aside[class^='aside']>a {
 	display: none;
 	/* Send to Phone Button */
@@ -77,6 +88,9 @@ div[class^='items']>a:last-child {
 	/* Alternatives Link */
 }
 div[class^='items']>hr {
+	display: none;
+}
+div[class^='thumbnails_'] {
 	display: none;
 }
 
@@ -127,4 +141,14 @@ div[class^='userCard']>div[class^='followButton'] {
 div[class^='userCard']>div[class^='followButton'] button {
 	position: relative;
 	top: 1rem;
+}
+
+/* Search page */
+div[class^='space'] {
+	display: none;
+}
+
+/* Notifications page fixing the scrollbar */
+#app>div>div>div[class^='constraintWidth_']>div[class^='white_'] {
+	box-sizing: border-box;
 }

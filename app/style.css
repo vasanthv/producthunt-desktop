@@ -13,15 +13,55 @@ body {
 	width: 72px;
 	background: #cc4d29;
 	color: #fff;
+	position: relative;
 }
 #wrapper aside #logo {
 	padding: 12px;
 	margin: auto;
+	cursor: pointer;
+}
+#wrapper aside ul {
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+	display: block;
+}
+#wrapper aside ul#bottom {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+#wrapper aside ul li a {
+	display: block;
+	text-align: center;
+	color: rgba(255, 255, 255, 0.6);
+	font-size: 1.5rem;
+	text-decoration: none;
+	padding: 15px 5px;
+	position: relative;
+}
+#wrapper aside ul li a.active {
+	color: #ffffff;
+}
+#wrapper aside ul li a span.dot {
+	display: inline-block;
+	height: 0.5rem;
+	width: 0.5rem;
+	background: #ffffff;
+	position: absolute;
+	top: calc(1.5rem / 2 + 15px / 2);
+	right: 7px;
+	border-radius: 50%;
+}
+#wrapper aside ul li a#profilepic img {
+	border-radius: 50%;
 }
 #wrapper #app {
 	flex: 1;
 	height: 100vh;
-	overflow-y: scroll;
+	overflow: hidden;
+	position: relative;
 }
 #app::-webkit-scrollbar {
 	width: 0.1rem;
@@ -36,8 +76,47 @@ body {
 	opacity: 0.5;
 	border-radius: 0.5rem;
 }
+#appwrap {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+#search {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 11;
+}
+#search input {
+	font-size: 1.25rem;
+	padding: 15px;
+	display: block;
+	width: 100%;
+	border: none;
+	border-radius: 0;
+	outline: 0;
+	box-sizing: border-box;
+	border-bottom: 1px solid #e8e8e8;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .05);
+}
 #webview {
+	flex: 1;
 	height: 100%;
 	opacity: 0;
-	transition: opacity 1s;
+	transition: opacity 0.5s;
+}
+#loading {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	z-index: 10;
+}
+#loading #gear {
+	margin: auto;
+	width: 60px;
+	height: 60px;
+	position: relative;
+	top: calc(50vh - 30px);
 }

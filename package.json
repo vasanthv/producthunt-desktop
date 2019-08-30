@@ -1,11 +1,13 @@
 {
-	"name": "phapp",
-	"version": "0.0.1",
-	"description": "A desktop app for Product Hunt",
+	"name": "Product-Hunt",
+	"version": "0.1.0",
+	"description": "An unofficial desktop app for Product Hunt",
 	"main": "main.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "electron ."
+		"start": "electron .",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder"
 	},
 	"repository": {
 		"type": "git",
@@ -15,13 +17,24 @@
 		"electron",
 		"producthunt"
 	],
-	"author": "Vasanth V",
+	"author": "Vasanth.V",
 	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/vasanthv/phapp/issues"
 	},
 	"homepage": "https://github.com/vasanthv/phapp#readme",
 	"devDependencies": {
-		"electron": "^6.0.4"
+		"electron": "^6.0.4",
+		"electron-builder": "^21.2.0"
+	},
+	"build": {
+		"appId": "ph.desktop",
+		"productName": "Product Hunt",
+		"copyright": "Copyright © ${author}",
+		"mac": {
+			"category": "public.app-category.news",
+			"darkModeSupport": true,
+			"icon": "icon.icns"
+		}
 	}
 }

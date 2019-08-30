@@ -10,3 +10,6 @@ npm-debug.log
 
 # Mac
 .DS_Store
+
+# dist folder
+dist

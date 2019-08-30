@@ -4,22 +4,67 @@
 	<meta charset="UTF-8">
 	<title>Product Hunt</title>
 	<link href="./style.css" rel="stylesheet" />
+	<link href="../icomoon/style.css" rel="stylesheet" />
 	<script defer src="./vue.min.js"></script>
 	<script defer src="./script.js"></script>
 </head>
 
 <body>
 	<section id="wrapper">
-		<aside>
-			<div id="logo">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-					<path id="circle" fill="#ffffff" d="M 0.00,128.00 C 0.00,57.31 57.31,0.00 128.00,0.00 198.69,0.00 256.00,57.31 256.00,128.00 256.00,198.69 198.69,256.00 128.00,256.00 57.31,256.00 0.00,198.69 0.00,128.00 Z" />
-					<path id="p" fill="#D04B25" stroke="#D04B25" stroke-width="1" d="M 96.00,76.80 C 96.00,76.80 144.26,76.80 144.26,76.80 163.55,76.80 179.20,92.45 179.20,112.00 179.20,131.04 163.55,146.69 144.26,147.20 144.26,147.20 115.20,147.20 115.20,147.20 115.20,147.20 115.20,179.20 115.20,179.20 115.20,179.20 96.00,179.20 96.00,179.20 96.00,179.20 96.00,76.80 96.00,76.80 96.00,76.80 96.00,76.80 96.00,76.80 Z M 144.49,128.00 C 153.06,128.00 160.00,120.83 160.00,112.00 160.00,103.17 153.06,96.00 144.49,96.00 144.49,96.00 115.20,96.00 115.20,96.00 115.20,96.00 115.20,128.00 115.20,128.00 115.20,128.00 144.49,128.00 144.49,128.00 144.49,128.00 144.49,128.00 144.49,128.00 Z" />
+		<aside id="navBar">
+			<div id="logo" v-on:click="homeClick">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+					<path id="ProductHunt" fill="#ffffff" d="M 27.20,28.80 C 31.84,28.80 35.60,25.04 35.60,20.40 35.60,15.76 31.84,12.00 27.20,12.00 27.20,12.00 15.60,12.00 15.60,12.00 15.60,12.00 15.60,36.00 15.60,36.00 15.60,36.00 20.40,36.00 20.40,36.00 20.40,36.00 20.40,28.80 20.40,28.80 20.40,28.80 27.20,28.80 27.20,28.80M 24.00,0.00 C 37.25,0.00 48.00,10.75 48.00,24.00 48.00,37.25 37.25,48.00 24.00,48.00 10.75,48.00 0.00,37.25 0.00,24.00 0.00,10.75 10.75,0.00 24.00,0.00M 27.20,16.80 C 27.20,16.80 27.20,16.80 27.20,16.80 29.19,16.80 30.80,18.41 30.80,20.40 30.80,22.39 29.19,24.00 27.20,24.00 27.20,24.00 27.20,24.00 27.20,24.00 27.20,24.00 20.40,24.00 20.40,24.00 20.40,24.00 20.40,16.80 20.40,16.80 20.40,16.80 27.20,16.80 27.20,16.80" />
 				</svg>
 			</div>
+			<ul>
+				<li>
+					<a href="javascript:void(0)" v-on:click="homeClick" v-bind:class="page == 'home' ? 'active' : ''">
+						<span class="icon-home"></span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" v-on:click="searchClick" v-bind:class="page == 'search' ? 'active' : ''">
+						<span class="icon-search"></span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0)" v-on:click="refreshClick">
+						<span class="icon-spinner11"></span>
+					</a>
+				</li>
+			</ul>
+			<ul id="bottom" v-if="userId">
+				<li>
+					<a href="javascript:void(0)" v-on:click="bellClick" v-bind:class="page == 'notifications' ? 'active' : ''">
+						<span class="icon-bell"></span>
+						<span class="dot" v-if="notificationCount > 0"></span>
+					</a>
+				</li>
+				<li v-if="page == 'profile'">
+					<a href="javascript:void(0)" v-on:click="exitClick">
+						<span class="icon-exit"></span>
+					</a>
+				</li>
+				<li>
+					<a id="profilepic" href="javascript:void(0)" v-on:click="profileClick">
+						<img v-bind:src="'https://ph-avatars.imgix.net/'+userId+'/original?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=40&h=40&fit=crop'"/>
+					</a>
+				</li>
+			</ul>
 		</aside>
 		<section id="app">
-			<webview id="webview" src="https://www.producthunt.com" nodeintegration></webview>
+			<div id="appwrap">
+				<div id="search">
+					<input v-if="showSearch" type="text" v-model="query" v-on:keyup.enter="onSearch" v-on:keyup.esc="closeSearch" placeholder="Search..." />
+				</div>
+				<webview id="webview" src="https://www.producthunt.com" nodeintegration></webview>
+			</div>
+			<div id="loading">
+				<div id="gear">
+					<img src="loading.svg"></img>
+				</div>
+			</div>
 		</section>
 	</section>
 </body>
