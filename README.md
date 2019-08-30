@@ -8,9 +8,9 @@ An unofficial desktop app for Product Hunt. *Currently available only for Mac.*
 This is an Electron app in which Product Hunt Web app is loaded in `<webview>`. 
 
 ### How is it different from the Product Hunt Web?
-This desktop app focuses only on the featured product listing. The homepage of Product Hunt is getting cluttered now-a-days, I have removed everything except the date-wise featured products listing, product & profile pages. In short this app is a minimized version of Product Hunt Web.
+This desktop app focuses only on the featured product listing. The homepage of Product Hunt is getting cluttered nowadays, I have removed everything except the date-wise featured products listing, product & profile pages. In short, this app is a minimized version of Product Hunt Web.
 
-*Coming soon for Linux & Windows*
+*Caution: This app heavily depends on the current DOM structure of the Product Hunt Web, it might break if Product Hunt updates their web. Also, I will do my best to update the app within a few days after the PH website is updated.*
 
 ### License
 MIT
